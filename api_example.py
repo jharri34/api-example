@@ -23,15 +23,16 @@ class member(Resource):
         result = {'data': query.cursor.fetchall()}
         return jsonify(result)
 
-@app.route("/")
-def hello():
-    return "Hello from Python!"
+class root(Resource):
+    def get(self):
+        return "Hello from Jay!"
+
 
 api.add_resource(member,'/member/<member>')
-api.add_resource(members, '/members') # Route_1
-
+api.add_resource(members, '/members')
+api.add_resource(root,'/')
 
 
 if __name__ == '__main__':
-     port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

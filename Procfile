@@ -1,1 +1,1 @@
-web: python api_example.py --log-file -
+web: python api_example.py 
