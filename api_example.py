@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from flask_jsonpify import jsonify
+import os
 
 db_connect = create_engine('sqlite:///members.db')
 app = Flask(__name__)
@@ -21,6 +22,10 @@ class member(Resource):
         query = conn.execute("select * from members where id =%d "  %int(member))
         result = {'data': query.cursor.fetchall()}
         return jsonify(result)
+
+@app.route("/")
+def hello():
+    return "Hello from Python!"
 
 api.add_resource(member,'/member/<member>')
 api.add_resource(members, '/members') # Route_1
