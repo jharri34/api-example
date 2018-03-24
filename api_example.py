@@ -35,8 +35,6 @@ class root(Resource):
         return "Hello from Jay!"
 
 
-api.add_resource(member,'/member/<member>')
-api.add_resource(members, '/members')
 api.add_resource(root,'/')
 api.add_resource(bash_command,'/bash/<cmd>')
 
